@@ -42,7 +42,8 @@ var app = new Vue({
 			}
 		},
 		submitBlock1() {
-			console.log('foo');
+			var crypto = Window.crypto;
+			console.log(crypto);
 			// Set default value to 0000 
 			this.genesisHash = '0000';
 			this.block1TimeStamp = this.getTimeSTamp();
@@ -57,13 +58,7 @@ var app = new Vue({
 			    const msgBuffer = new TextEncoder('utf-8').encode(message);                    
 
 			    // hash the message
-			    let hashBuffer;
-			    try {
-			    	hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer); // await makes this line wait till the promise settles and return its result 
-			    } catch(err) {
-			    	console.log(err);
-			    }
-
+			    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer); // await makes this line wait till the promise settles and return its result 
 
 			    // convert ArrayBuffer to Array
 			    const hashArray = Array.from(new Uint8Array(hashBuffer));

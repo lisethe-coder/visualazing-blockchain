@@ -42,8 +42,6 @@ var app = new Vue({
 			}
 		},
 		submitBlock1() {
-			var crypto = Window.crypto;
-			console.log(crypto);
 			// Set default value to 0000 
 			this.genesisHash = '0000';
 			this.block1TimeStamp = this.getTimeSTamp();

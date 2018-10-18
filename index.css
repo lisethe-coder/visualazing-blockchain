@@ -1,0 +1,47 @@
+#app{
+	background-color: #235470;
+	font-family: sans-serif;
+	color: #235470;
+}
+.flex-container {
+	display: flex;
+	justify-content: center;
+}
+.block{
+	background-color: #D3DDE2;
+	padding: 1% 1%;
+	border-right: 1px solid lightgrey;
+	margin-top: 1%;
+	margin-bottom: 5%;
+}
+.submit-data {
+	background-color: #52B1DB;
+	padding: 10px 15px;
+	color: fff;
+	text-decoration: none;
+	float: left;
+    margin-top: 5%;
+    margin-left: 25%;
+    border-radius: 10px;
+}
+input {
+	width: 75%;
+	padding: 6px;
+	border-style: none;
+	border-radius: 2px;
+	margin-top: 0;
+	margin-bottom: 13px;
+	font-color: #235470;
+	background: #E9ECEF;
+}
+textarea {
+	background-color: #E9ECEF;
+	border: none;
+}
+.footer-data {
+	padding-top: 25px;
+}
+
+button:disabled {
+    background-color: #549EF5;
+}

@@ -59,10 +59,11 @@ var app = new Vue({
 			    // hash the message
 			    let hashBuffer;
 			    try {
-			    	hashBuffer = await(crypto.subtle && crypto.subtle.digest('SHA-256', msgBuffer)); // await makes this line wait till the promise settles and return its result 
-			    } catch (err) {
+			    	hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer); // await makes this line wait till the promise settles and return its result 
+			    } catch(err) {
 			    	console.log(err);
 			    }
+
 
 			    // convert ArrayBuffer to Array
 			    const hashArray = Array.from(new Uint8Array(hashBuffer));

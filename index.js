@@ -49,12 +49,20 @@ var app = new Vue({
 			
 			var message = this.amount1 || this.sender1 || this.recipient1;
 			
+			/* async word means one simple thing: 
+				a function always returns a promise. 
+			*/
 			async function sha256(message) {
 			    // encode as UTF-8
 			    const msgBuffer = new TextEncoder('utf-8').encode(message);                    
 
 			    // hash the message
-			    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+			    let hashBuffer;
+			    try {
+			    	hashBuffer = await(crypto.subtle && crypto.subtle.digest('SHA-256', msgBuffer)); // await makes this line wait till the promise settles and return its result 
+			    } catch (err) {
+			    	console.log(err);
+			    }
 
 			    // convert ArrayBuffer to Array
 			    const hashArray = Array.from(new Uint8Array(hashBuffer));
@@ -91,7 +99,7 @@ var app = new Vue({
 			sha256(message).then((hashVal)=>{
 				this.block2CurrentHash = hashVal;
 			});
-			
+
 			var that = this;
 			return function() {
 				that.calculateColor(that.block2CurrentHash, that.block3Hash);
